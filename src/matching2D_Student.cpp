@@ -90,7 +90,7 @@ void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descr
 }
 
 // Detect keypoints in image using the traditional Shi-Thomasi detector
-void detKeypointsShiTomasi(vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool bVis)
+void detKeypointsShiTomasi(vector<cv::KeyPoint> &keypoints, cv::Mat &img, double &time, bool bVis)
 {
     // compute detector parameters based on image size
     int blockSize = 2;       //  size of an average block for computing a derivative covariation matrix over each pixel neighborhood
@@ -116,6 +116,7 @@ void detKeypointsShiTomasi(vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool b
         keypoints.push_back(newKeyPoint);
     }
     t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
+    time = t;
     cout << "Shi-Tomasi detection with n=" << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
 
     // visualize results
@@ -130,13 +131,13 @@ void detKeypointsShiTomasi(vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool b
     }
 }
 
-void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool bVis)
+void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, double &time, bool bVis)
 {
     int blockSize = 2;  // for every pixel, a blockSize × blockSize neighborhood is considered
     int apertureSize = 3; // aperture parameter for Sobel operator 
     int minResponse = 100; // minimum value for a corner in the 8 bit scaled response matrix
     double k = 0.04;  //Haris parameter
-
+    double t = (double)cv::getTickCount();
     // Detect Harris corners and normalize output
     cv::Mat dst, dst_norm, dst_norm_scaled;
     dst = cv::Mat::zeros(img.size(), CV_32FC1);
@@ -160,6 +161,9 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
             }
         }
     }
+    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
+    time = t;
+    cout << "Harris detection with n=" << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
     if  (bVis)
     {
         string windowName = "Harris Corner Detection Results";
@@ -171,7 +175,7 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
     }
 
 }
-void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std::string detectorType, bool bVis)
+void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std::string detectorType, double &time, bool bVis)
 {
     cv::Ptr<cv::FeatureDetector> detector;
     //cv::Mat desc;
@@ -197,7 +201,11 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     {
         detector = cv::AKAZE::create();
     }
+    double t = (double)cv::getTickCount();
     detector->detect(img, keypoints); 
+    t = ((double)cv::getTickCount()-t)/cv::getTickFrequency();
+    time = t;
+    cout << detectorType <<" detection with n=" << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
     if (bVis)
     {
         cv::Mat visImage = img.clone();
