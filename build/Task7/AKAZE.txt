@@ -1,13 +1,11 @@
-5 occurs 3168 times 
-6 occurs 4166 times 
-7 occurs 109 times 
-9 occurs 3539 times 
-10 occurs 6 times 
-12 occurs 1573 times 
-14 occurs 98 times 
-17 occurs 707 times 
-20 occurs 6 times 
-23 occurs 52 times 
-28 occurs 5 times 
-There are 13429 keypoints in total.
-The AKAZE detection took 27.6072 ms in average.
+5 occurs 415 times 
+6 occurs 503 times 
+7 occurs 17 times 
+9 occurs 380 times 
+12 occurs 214 times 
+14 occurs 5 times 
+17 occurs 121 times 
+23 occurs 14 times 
+28 occurs 1 time 
+There are 1670 keypoints in total.
+The AKAZE detection took 25.4042 ms in average.

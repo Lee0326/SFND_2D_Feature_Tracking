@@ -1,9 +1,0 @@
-There are total 67 successful matched keypoints
-There are total 70 successful matched keypoints
-There are total 72 successful matched keypoints
-There are total 84 successful matched keypoints
-There are total 91 successful matched keypoints
-There are total 101 successful matched keypoints
-There are total 91 successful matched keypoints
-There are total 93 successful matched keypoints
-There are total 91 successful matched keypoints

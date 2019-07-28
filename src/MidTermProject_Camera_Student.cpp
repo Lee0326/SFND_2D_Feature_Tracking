@@ -29,11 +29,16 @@ int main(int argc, const char *argv[])
     boost::filesystem::create_directories(dir_Task);
     ofstream detector_result;
     ofstream detector_descriptor;
+
+    int matched_keypoints_count = 0;
+
     string detectorType = argv[1];
     string descriptorType = argv[2];
+
     detector_result.open("Task7/" + detectorType + ".txt");
     detector_descriptor.open("Matched_Keypoints_Result.txt",ios::app);
-    double total_time = 0.0;
+    double total_time_det = 0.0;
+    double total_time_des = 0.0;
 
     /* INIT VARIABLES AND DATA STRUCTURES */
 
@@ -102,8 +107,8 @@ int main(int argc, const char *argv[])
         {
             detKeypointsModern(keypoints, imgGray, detectorType, time, false);
         }
-        total_time += time;
-        cout << "detection took " << 1000*total_time << " ms" << endl;
+        total_time_det += time;
+        cout << "detection took " << 1000*total_time_det << " ms" << endl;
         //// EOF STUDENT ASSIGNMENT
 
         //// STUDENT ASSIGNMENT
@@ -118,10 +123,14 @@ int main(int argc, const char *argv[])
             for (auto it = keypoints.begin(); it !=keypoints.end();)
             {
                 // insert the size conut into the distribution map
-                ++size_count[ceil(it->size)];
+                
                 // remove the keypoints not the preceding vehicle
                 if (!vehicleRect.contains(it->pt))  it = keypoints.erase(it);
-                else ++it;
+                else
+                {
+                    ++size_count[ceil(it->size)];
+                    ++it;
+                }                 
             }           
         }
 
@@ -153,7 +162,10 @@ int main(int argc, const char *argv[])
 
         cv::Mat descriptors;
         // string descriptorType = "BRIEF"; // BRISK, BRIEF, ORB, FREAK, AKAZE, SIFT
+        double t_des = cv::getTickCount();
         descKeypoints((dataBuffer.end() - 1)->keypoints, (dataBuffer.end() - 1)->cameraImg, descriptors, descriptorType);
+        t_des = ((double)cv::getTickCount()-t_des)/cv::getTickFrequency();
+        total_time_des += t_des;
         //// EOF STUDENT ASSIGNMENT
 
         // push descriptors for current frame to end of data buffer
@@ -168,7 +180,7 @@ int main(int argc, const char *argv[])
 
             vector<cv::DMatch>  matches;
             string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
-            string descriptorType = detectorType=="SIFT"? "DES_HOG":"DES_BINARY";
+            string match_descriptorType = descriptorType=="SIFT"? "DES_HOG":"DES_BINARY";
             //string descriptorType = "DES_HOG"; // DES_BINARY, DES_HOG
             string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
 
@@ -178,17 +190,17 @@ int main(int argc, const char *argv[])
 
             matchDescriptors((dataBuffer.end() - 2)->keypoints, (dataBuffer.end() - 1)->keypoints,
                              (dataBuffer.end() - 2)->descriptors, (dataBuffer.end() - 1)->descriptors,
-                             matches, descriptorType, matcherType, selectorType);
+                             matches, match_descriptorType, matcherType, selectorType);
 
             //// EOF STUDENT ASSIGNMENT
 
             // store matches in current data frame
             (dataBuffer.end() - 1)->kptMatches = matches;
-            detector_descriptor << detectorType + "_" + descriptorType + " combination has " << matches.size() << " successful matched keypoints" << endl;
+            matched_keypoints_count += matches.size();
             cout << "#4 : MATCH KEYPOINT DESCRIPTORS done" << endl;
 
             // visualize matches between current and previous image
-            bVis = true;
+            bVis = false;
             if (bVis)
             {
                 cv::Mat matchImg = ((dataBuffer.end() - 1)->cameraImg).clone();
@@ -215,6 +227,12 @@ int main(int argc, const char *argv[])
         detector_result << size.first << " occurs " << size.second << ((size.second >1) ? " times ":" time ") << endl;
     }
     detector_result << "There are " << keypoints_count << " keypoints in total." << endl;
-    detector_result << "The " << detectorType << " detection took " << 1000*total_time/(10) << " ms in average." << endl;
+    detector_result << "The " << detectorType << " detection took " << 1000*total_time_det/(10) << " ms in average." << endl;
+    
+    detector_descriptor << detectorType + "_" + descriptorType + " combination has " << matched_keypoints_count 
+    << " successful matched keypoints for all 10 images." << endl;
+    detector_descriptor << "It took " << 1000*total_time_des/(10) << " ms for descriptor extraction in average.\n" << endl; 
+    
+
     return 0;
 }

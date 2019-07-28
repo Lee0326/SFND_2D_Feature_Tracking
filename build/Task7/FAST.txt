@@ -1,3 +1,3 @@
-7 occurs 17874 times 
-There are 17874 keypoints in total.
-The FAST detection took 1.27758 ms in average.
+7 occurs 1491 times 
+There are 1491 keypoints in total.
+The FAST detection took 0.431314 ms in average.
