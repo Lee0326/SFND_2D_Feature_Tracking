@@ -8,4 +8,4 @@
 23 occurs 14 times 
 28 occurs 1 time 
 There are 1670 keypoints in total.
-The AKAZE detection took 25.4042 ms in average.
+The AKAZE detection took 29.3531 ms in average.

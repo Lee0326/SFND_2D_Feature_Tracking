@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/lee/Udacity/SFND_2D_Feature_Tracking/src/MidTermProject_Camera_Student.cpp
+/home/colin/UDACITY/SFND_2D_Feature_Tracking/src/MidTermProject_Camera_Student.cpp
 iostream
 -
 fstream
@@ -40,17 +40,17 @@ opencv2/xfeatures2d.hpp
 opencv2/xfeatures2d/nonfree.hpp
 -
 dataStructures.h
-/home/lee/Udacity/SFND_2D_Feature_Tracking/src/dataStructures.h
+/home/colin/UDACITY/SFND_2D_Feature_Tracking/src/dataStructures.h
 matching2D.hpp
-/home/lee/Udacity/SFND_2D_Feature_Tracking/src/matching2D.hpp
+/home/colin/UDACITY/SFND_2D_Feature_Tracking/src/matching2D.hpp
 
-/home/lee/Udacity/SFND_2D_Feature_Tracking/src/dataStructures.h
+/home/colin/UDACITY/SFND_2D_Feature_Tracking/src/dataStructures.h
 vector
 -
 opencv2/core.hpp
 -
 
-/home/lee/Udacity/SFND_2D_Feature_Tracking/src/matching2D.hpp
+/home/colin/UDACITY/SFND_2D_Feature_Tracking/src/matching2D.hpp
 stdio.h
 -
 iostream
@@ -78,13 +78,7 @@ opencv2/xfeatures2d.hpp
 opencv2/xfeatures2d/nonfree.hpp
 -
 dataStructures.h
-/home/lee/Udacity/SFND_2D_Feature_Tracking/src/dataStructures.h
-
-/home/lee/Udacity/SFND_2D_Feature_Tracking/src/matching2D_Student.cpp
-numeric
--
-matching2D.hpp
-/home/lee/Udacity/SFND_2D_Feature_Tracking/src/matching2D.hpp
+/home/colin/UDACITY/SFND_2D_Feature_Tracking/src/dataStructures.h
 
 /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
 opencv2/core/core_c.h

@@ -33,4 +33,4 @@
 50 occurs 1 time 
 52 occurs 1 time 
 There are 1386 keypoints in total.
-The SIFT detection took 46.3605 ms in average.
+The SIFT detection took 46.5599 ms in average.

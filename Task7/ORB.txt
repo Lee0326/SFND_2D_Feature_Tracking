@@ -7,4 +7,4 @@
 93 occurs 94 times 
 112 occurs 103 times 
 There are 1160 keypoints in total.
-The ORB detection took 12.3663 ms in average.
+The ORB detection took 4.78151 ms in average.

@@ -25,7 +25,7 @@ using namespace std;
 /* MAIN PROGRAM */
 int main(int argc, const char *argv[])
 {
-    boost::filesystem::path dir_Task("Task7");
+    boost::filesystem::path dir_Task("../Task7");
     boost::filesystem::create_directories(dir_Task);
     ofstream detector_result;
     ofstream detector_descriptor;
@@ -35,8 +35,8 @@ int main(int argc, const char *argv[])
     string detectorType = argv[1];
     string descriptorType = argv[2];
 
-    detector_result.open("Task7/" + detectorType + ".txt");
-    detector_descriptor.open("Matched_Keypoints_Result.txt",ios::app);
+    detector_result.open("../Task7/" + detectorType + ".txt");
+    detector_descriptor.open("../Matched_Keypoints_Result.txt",ios::app);
     double total_time_det = 0.0;
     double total_time_des = 0.0;
 

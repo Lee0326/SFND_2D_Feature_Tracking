@@ -31,4 +31,23 @@ See the classroom instruction and code comments for more details on each of thes
 1. Clone this repo.
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
-4. Run it: `./2D_feature_tracking`.
+4. Run it with detector and descriptor type as arguments: `./2D_feature_tracking DetectorType DescriptorType ` . For example, if you want to use FAST detector and ORB descriptor, run it with command:  `./2D_feature_tracking FAST ORB`
+
+## Test and Evaluation 
+
+### Detector Test
+
+1. To run the Task7.sh file in the top level directory: `./Task7.sh`
+
+2. The results would be stored in the /build/Task7 folder. The txt files named after the corresponding detector name contains the keypoints count for all 10 images, average detection time consuming per frame and keypoints size distribution information. 
+
+3.  The results is illustrated by the bar chart below. The FAST detector has the highest keypoints count/time consuming ratio, while the SIFT detector has the lowest.![1564381849422](assets/1564381849422.png)
+
+4. The neighborhood size in the result txt files has been ceiled to a integer. The FAST , HARRIS and SHITOMASI detector only have one neighborhood size, which are 7, 6 and 2 respectively.  The ORB has relative large size and Other detector size distribution can be found in the Task7 folder.  
+
+   ![1564383906135](assets/1564383906135.png)
+
+   ![1564383929660](assets/1564383929660.png)
+
+## Descriptor Test
+
