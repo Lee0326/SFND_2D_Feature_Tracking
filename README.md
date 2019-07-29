@@ -37,9 +37,9 @@ See the classroom instruction and code comments for more details on each of thes
 
 ### Detector Test
 
-1. To run the Task7.sh file in the top level directory: `./Task7.sh`
+1. Run the Task7.sh file in the top level directory: `./Task7.sh`
 
-2. The results would be stored in the /build/Task7 folder. The txt files named after the corresponding detector name contains the keypoints count for all 10 images, average detection time consuming per frame and keypoints size distribution information. 
+2. The results would be stored in the /Task7 folder. The txt files named after the corresponding detector name contains the keypoints count for all 10 images, average detection time consuming per frame and keypoints size distribution information. 
 
 3.  The results is illustrated by the bar chart below. The FAST detector has the highest keypoints count/time consuming ratio, while the SIFT detector has the lowest.![1564381849422](assets/1564381849422.png)
 
