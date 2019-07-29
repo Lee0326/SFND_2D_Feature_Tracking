@@ -54,4 +54,4 @@
 71 occurs 1 time 
 72 occurs 106 times 
 There are 2762 keypoints in total.
-The BRISK detection took 24.3493 ms in average.
+The BRISK detection took 24.3616 ms in average.

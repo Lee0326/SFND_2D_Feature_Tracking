@@ -3,9 +3,8 @@
 detector_set=("HARRIS" "FAST" "BRISK" "ORB" "AKAZE" "SIFT" "SHITOMASI")
 descriptor_set=("BRIEF" "ORB" "FREAK" "AKAZE" "SIFT")
 
-cd  build/
 rm Matched_Keypoints_Result.txt
-
+cd  build/
 
 for detector in ${detector_set[@]};
 do

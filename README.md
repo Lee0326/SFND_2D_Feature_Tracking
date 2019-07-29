@@ -37,13 +37,15 @@ See the classroom instruction and code comments for more details on each of thes
 
 ### Detector Test
 
-1. Run the Task7.sh file in the top level directory: `./Task7.sh`
+1. ORB, SIFT, FAST, BRISK, AKAZE, HARRIS and SHITOMASI detectors were tested. 
 
-2. The results would be stored in the /Task7 folder. The txt files named after the corresponding detector name contains the keypoints count for all 10 images, average detection time consuming per frame and keypoints size distribution information. 
+2. Run the Task7.sh file in the top level directory: `./Task7.sh`
 
-3.  The results is illustrated by the bar chart below. The FAST detector has the highest keypoints count/time consuming ratio, while the SIFT detector has the lowest.![1564381849422](assets/1564381849422.png)
+3. The results would be stored in the /Task7 folder. The txt files named after the corresponding detector name contains the keypoints count for all 10 images, average detection time consuming per frame and keypoints size distribution information. 
 
-4. The neighborhood size in the result txt files has been ceiled to a integer. The FAST , HARRIS and SHITOMASI detector only have one neighborhood size, which are 7, 6 and 2 respectively.  The ORB has relative large size and Other detector size distribution can be found in the Task7 folder.  
+4. The results is illustrated by the bar chart below. The FAST detector has the highest keypoints count/time consuming ratio, while the SIFT detector has the lowest.![1564381849422](assets/1564381849422.png)
+
+5. The neighborhood size in the result txt files has been ceiled to a integer. The FAST , HARRIS and SHITOMASI detector only have one neighborhood size, which are 7, 6 and 2 respectively.  The ORB has relative large size and Other detector size distribution can be found in the Task7 folder.  
 
    ![1564383906135](assets/1564383906135.png)
 
@@ -51,3 +53,13 @@ See the classroom instruction and code comments for more details on each of thes
 
 ## Descriptor Test
 
+1. BRIEF, ORB, FREAK, AKAZE and SIFT descriptors were tested.  In the matching step, the BF approach is used with the descriptor distance ratio set to 0.8.
+2. Run the Task8_9.sh file in the top level directory: `./Task8_9.sh`
+3. The results were stored in the Matched_Keypoints_Results.txt file. It contains the matched keypoints count and time consuming for descriptor extraction. The spreadsheets of the measures are shown below.![1564391150074](assets/1564391150074.png)
+4. The color scale stands for the value of measures: red is low, yellow is medium and green is high. Black means the combination is not compatible. 
+
+## Results Evaluation and Recommendation  
+
+The performance of the combinations were evaluated in terms of the matched keypoints count and its corresponding consumed time (detection+descriptor extraction). The combination that holds higher count/consumed _time ratio can be seen as a better choice. ![1564392184896](assets/1564392184896.png)
+
+From the spreadsheet above, the TOP3 combinations are FAST-BRIEF, FAST-ORB and SHITOMASI-BRIEF. 

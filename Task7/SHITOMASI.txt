@@ -1,3 +1,3 @@
 2 occurs 2326 times 
 There are 2326 keypoints in total.
-The SHITOMASI detection took 7.7408 ms in average.
+The SHITOMASI detection took 5.86595 ms in average.
